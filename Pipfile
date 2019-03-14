@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+black = "==18.9b0"
+codecov = "~=2.0"
+flake8 = "~=3.7"
+isort = "~=4.3"
+pytest = "~=4.3"
+pytest-cov = "~=2.6"
+twine = "~=1.13"
+wheel = "~=0.33"
+
+[packages]
+
+[requires]
+python_version = "3.7"

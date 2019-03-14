@@ -1,0 +1,19 @@
+version: "0.1.0"
+
+targets:
+  - id: catchall
+    stalk:
+      paths:
+        - "**/*"
+      base: master
+    pounce:
+      auto_pounce: true
+      author_implicit_reviewer: true
+      check_delay: 10
+      commit_message_pr_number: true
+      delete: true
+      merge_method: merge
+      reviewers:
+        - tommilligan
+      not_ready_labels:
+        - WIP
