@@ -1,4 +1,4 @@
-.PHONY: help clean dev docs package test
+.PHONY: help clean coverage dev lint package test upload
 
 help:
 	@echo "This project assumes that an active Python virtualenv is present."
@@ -26,6 +26,7 @@ test:
 	isort --diff
 	black --check --diff .
 	flake8
+	mypy flake8_fixme
 	pytest --cov=./
 
 upload:

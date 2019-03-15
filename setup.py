@@ -4,19 +4,19 @@ from __future__ import with_statement
 
 from setuptools import setup
 
-from flake8_fixme.version import version
+from flake8_fixme.metadata import CODE_STEM, NAME, VERSION
 
 
-def get_long_description():
+def get_readme() -> str:
     with open("README.md") as readme_handle:
         return readme_handle.read()
 
 
 setup(
-    name="flake8-fixme",
-    version=version,
-    description="FIXME and TODO checker. Plugin for flake8.",  # noqa: FME000,FME001
-    long_description=get_long_description(),
+    name=NAME,
+    version=VERSION,
+    description="FIXME and TODO checker. Plugin for flake8.",  # noqa: T
+    long_description=get_readme(),
     keywords="flake8 plugin fixme todo xxx hack",
     author="Tom Milligan",
     author_email="tommilligan@users.noreply.github.com",
@@ -25,7 +25,7 @@ setup(
     py_modules=["flake8_fixme"],
     install_requires=[],
     zip_safe=False,
-    entry_points={"flake8.extension": ["FME = flake8_fixme:check"]},
+    entry_points={"flake8.extension": ["{} = flake8_fixme:check".format(CODE_STEM)]},
     classifiers=[
         "Framework :: Flake8",
         "Development Status :: 5 - Stable",
