@@ -18,7 +18,7 @@ RX_WORDS = re.compile("\\b({})\\b".format("|".join(WORD_CODES)))
 
 
 def format_message(code: Code, word: str) -> Flake8Message:
-    return Flake8Message("{} Fixme found ({})".format(code, word))
+    return Flake8Message("{} fixme found ({})".format(code, word))
 
 
 def match_to_flake8_result(match: Match[str]) -> Flake8Result:

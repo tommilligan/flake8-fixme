@@ -1,8 +1,8 @@
 from flake8_fixme import check as _check
 
-T100 = "T100 Fixme found (FIXME)"
-T101 = "T101 Fixme found (TODO)"
-T102 = "T102 Fixme found (XXX)"
+T100 = "T100 fixme found (FIXME)"
+T101 = "T101 fixme found (TODO)"
+T102 = "T102 fixme found (XXX)"
 
 
 def check(line):
