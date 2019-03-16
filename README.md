@@ -40,6 +40,14 @@ Each word has a seperate warning so you can adjust your workflow. We like to all
 
 ## Changelog
 
+### 1.0.2
+
+#### Enhancements
+
+- development pipeline now runs integration tests with flake8, for
+  - locally built package (all builds)
+  - package downloaded from pypi (after version release)
+
 ### 1.0.1
 
 #### Bugfixes
