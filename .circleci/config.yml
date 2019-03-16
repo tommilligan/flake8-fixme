@@ -1,4 +1,9 @@
 version: 2.1
+
+_docker_python_default: &docker_python_default
+  docker:
+    - image: circleci/python:3.7
+
 workflows:
   build_and_deploy:
     jobs:
@@ -39,15 +44,30 @@ workflows:
           filters:
             tags:
               only: /.*/
+      # Reinstall the generated packages and test
+      - integrate:
+          name: integrate-local
+          make_install: package-install
+          requires:
+            - build
+          filters:
+            tags:
+              only: /.*/
       # Deploy if tagged
       - deploy:
           requires:
-            - build
+            - integrate-local
           filters:
             tags:
               only: /v[0-9]+(\.[0-9]+)*/
             branches:
               ignore: /.*/
+      # Reinstall from pypi and test
+      - integrate:
+          name: integrate-pypi
+          make_install: pypi-install
+          requires:
+            - deploy
 jobs:
   test:
     parameters:
@@ -60,7 +80,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: v1-dependency-cache-{{ checksum "Pipfile.lock" }}
+          key: v1-dependency-cache-<< parameters.version >>-{{ checksum "Pipfile.lock" }}
       - run:
           name: install python dependencies
           command: |
@@ -68,7 +88,7 @@ jobs:
             . ~/venv/bin/activate
             make dev
       - save_cache:
-          key: v1-dependency-cache-{{ checksum "Pipfile.lock" }}
+          key: v1-dependency-cache-<< parameters.version >>-{{ checksum "Pipfile.lock" }}
           paths:
             - "~/venv"
       - run:
@@ -79,12 +99,11 @@ jobs:
             pip install .
             codecov
   build:
-    docker:
-      - image: circleci/python:3.6
+    <<: *docker_python_default
     steps:
       - checkout
       - restore_cache:
-          key: v1-dependency-cache-{{ checksum "Pipfile.lock" }}
+          key: v1-dependency-cache-3.7-{{ checksum "Pipfile.lock" }}
       - run:
           name: install python dependencies
           command: |
@@ -92,7 +111,7 @@ jobs:
             . ~/venv/bin/activate
             make dev
       - save_cache:
-          key: v1-dependency-cache-{{ checksum "Pipfile.lock" }}
+          key: v1-dependency-cache-3.7-{{ checksum "Pipfile.lock" }}
           paths:
             - "~/venv"
       - run:
@@ -105,11 +124,31 @@ jobs:
       - persist_to_workspace:
           root: "~"
           paths:
-            - venv
             - project/dist
+            - project/integrate
+            - venv
+  integrate:
+    parameters:
+      make_install:
+        type: string
+    <<: *docker_python_default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: "~"
+      - run:
+          name: install prebuilt package
+          command: |
+            . ~/venv/bin/activate
+            make uninstall
+            make FLAKE8_FIXME_VERSION=${CIRCLE_TAG:1} << parameters.make_install >>
+      - run:
+          name: run integration tests
+          command: |
+            . ~/venv/bin/activate
+            make integrate
   deploy:
-    docker:
-      - image: circleci/python:3.6
+    <<: *docker_python_default
     steps:
       - checkout
       - attach_workspace:
@@ -123,3 +162,10 @@ jobs:
           command: |
             . ~/venv/bin/activate
             make upload
+      # We don't need our built packages anymore
+      # so we drop them from the workspace
+      - persist_to_workspace:
+          root: "~"
+          paths:
+            - project/integrate
+            - venv
