@@ -40,6 +40,13 @@ Each word has a seperate warning so you can adjust your workflow. We like to all
 
 ## Changelog
 
+### 1.0.1
+
+#### Bugfixes
+
+- fixed pypi packaging not picking up source files
+- fixed setup.py not loading markdown readme correctly
+
 ### 1.0.0
 
 #### Breaking changes
