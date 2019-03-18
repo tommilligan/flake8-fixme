@@ -19,7 +19,7 @@ Install with pip:
 pip install flake8-fixme
 ```
 
-The plugin officially supports Python `>= 3.6` and `flake8 >= 3`.
+The plugin officially supports Python `>= 3.6` and `flake8 >= 3.7`.
 You may find other Python 3 versions work as well.
 
 ## Usage
