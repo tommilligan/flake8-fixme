@@ -11,6 +11,7 @@ WORD_CODES: Dict[str, Code] = {
     "FIXME": code_from("100"),  # noqa: T100
     "TODO": code_from("101"),  # noqa: T101
     "XXX": code_from("102"),  # noqa: T102
+    "HACK": code_from("103"),  # noqa: T103
 }
 
 # Find any one of the note words definded above

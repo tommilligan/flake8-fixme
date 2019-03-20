@@ -3,6 +3,7 @@ from flake8_fixme import check as _check
 T100 = "T100 fixme found (FIXME)"
 T101 = "T101 fixme found (TODO)"
 T102 = "T102 fixme found (XXX)"
+T103 = "T103 fixme found (HACK)"
 
 
 def check(line):
@@ -15,6 +16,7 @@ def test_fixme():
     assert check("# TODO in comment") == [(2, T101)]
     assert check("TODO this line") == [(0, T101)]
     assert check("# XXX") == [(2, T102)]
+    assert check("# HACKY HACK HACK") == [(8, T103), (13, T103)]
 
 
 def test_fixme_word_boundaries():
