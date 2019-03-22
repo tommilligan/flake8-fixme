@@ -15,7 +15,7 @@ def get_readme() -> str:
 setup(
     name=NAME,
     version=VERSION,
-    description="FIXME and TODO checker. Plugin for flake8.",  # noqa: T
+    description="Check for FIXME, TODO and other temporary developer notes. Plugin for flake8.",  # noqa: T
     long_description=get_readme(),
     long_description_content_type="text/markdown",
     keywords="flake8 plugin fixme todo xxx hack",

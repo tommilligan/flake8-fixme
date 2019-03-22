@@ -5,7 +5,7 @@
 [![codecov](https://codecov.io/gh/tommilligan/flake8-fixme/branch/master/graph/badge.svg)](https://codecov.io/gh/tommilligan/flake8-fixme/branch/master)
 ![CircleCI branch](https://img.shields.io/circleci/project/github/tommilligan/flake8-fixme/master.svg)
 
-Check for FIXME and other temporary comment notes.
+Check for FIXME, TODO and other temporary developer notes.
 
 This module provides a plugin for `flake8`, the Python code checker.
 
