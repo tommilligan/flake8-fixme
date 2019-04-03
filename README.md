@@ -3,7 +3,7 @@
 [![PyPI](https://img.shields.io/pypi/v/flake8-fixme.svg)](https://pypi.python.org/pypi/flake8-fixme)
 [![PyPI](https://img.shields.io/pypi/pyversions/flake8-fixme.svg)](https://pypi.python.org/pypi/flake8-fixme)
 [![codecov](https://codecov.io/gh/tommilligan/flake8-fixme/branch/master/graph/badge.svg)](https://codecov.io/gh/tommilligan/flake8-fixme/branch/master)
-![CircleCI branch](https://img.shields.io/circleci/project/github/tommilligan/flake8-fixme/master.svg)
+[![CircleCI branch](https://img.shields.io/circleci/project/github/tommilligan/flake8-fixme/master.svg)](https://circleci.com/gh/tommilligan/flake8-fixme)
 
 Check for FIXME, TODO and other temporary developer notes.
 
