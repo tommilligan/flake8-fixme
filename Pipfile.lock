@@ -343,11 +343,11 @@
         },
         "wheel": {
             "hashes": [
-                "sha256:66a8fd76f28977bb664b098372daef2b27f60dc4d1688cfab7b37a09448f0e9d",
-                "sha256:8eb4a788b3aec8abf5ff68d4165441bc57420c9f64ca5f471f58c3969fe08668"
+                "sha256:2ef391896c1c6dce2e1f67ac2f371b41fdc2f46a90d3142ec3239419535df1ca",
+                "sha256:83d7adfdd1adbc133830e2e4c3f43ba75f1d4bfe0c96bd56405837f5f4fe6366"
             ],
             "index": "pypi",
-            "version": "==0.33.1"
+            "version": "==0.33.2"
         }
     }
 }
