@@ -40,6 +40,18 @@ Each word has a seperate warning so you can adjust your workflow. We like to all
 
 ## Changelog
 
+### 1.1.1
+
+#### Enhancements
+
+- update `setup.py` metadata to match other parts of the repo
+
+### 1.1.0
+
+#### Features
+
+- lint the word `HACK`
+
 ### 1.0.2
 
 #### Enhancements
