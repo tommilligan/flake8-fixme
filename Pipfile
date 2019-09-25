@@ -11,7 +11,7 @@ isort = "~=4.3"
 mypy = "~=0.720"
 pytest = "~=5.1"
 pytest-cov = "~=2.7"
-twine = "~=1.15"
+twine = "~=2.0"
 wheel = "~=0.33"
 
 [packages]
