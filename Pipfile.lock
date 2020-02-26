@@ -44,7 +44,6 @@
                 "sha256:44f69771e2ac81ff30d929d485b7f9919f3ad6d019b6b20c74f3b8687c3f70df",
                 "sha256:aa8b870d0f46965bac2c073a93444636b0e1ca74e9777e34f03dd494b8a59d48"
             ],
-            "index": "pypi",
             "version": "==3.1.1"
         },
         "certifi": {
@@ -103,11 +102,11 @@
         },
         "codecov": {
             "hashes": [
-                "sha256:8ed8b7c6791010d359baed66f84f061bba5bd41174bf324c31311e8737602788",
-                "sha256:ae00d68e18d8a20e9c3288ba3875ae03db3a8e892115bf9b83ef20507732bed4"
+                "sha256:38b32934e759a29313382287f59986f25613708f60760c88d31e956399bbeffe",
+                "sha256:4cf93c30cc1ddb6d7414fce0a45816889499c3febc8bbbc24f1cd1936a804087"
             ],
             "index": "pypi",
-            "version": "==2.0.15"
+            "version": "==2.0.16"
         },
         "coverage": {
             "hashes": [
