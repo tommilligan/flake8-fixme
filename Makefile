@@ -11,7 +11,7 @@ coverage:
 	codecov
 
 dev:
-	pip install "pipenv==2018.11.26"
+	pip install "pipenv==2020.11.15"
 	pipenv install --dev --deploy
 	pip install -e .
 
@@ -19,7 +19,7 @@ integrate:
 	pytest integrate
 
 lint:
-	isort -y
+	isort -y .
 	black .
 
 package:
@@ -33,11 +33,15 @@ pypi-install:
 	pip install -U --no-cache-dir "flake8-fixme==${FLAKE8_FIXME_VERSION}"
 
 test:
-	isort --diff
+	isort --diff .
 	black --check --diff .
 	flake8
 	mypy flake8_fixme integrate
 	pytest --cov=./ flake8_fixme
+
+update:
+	pipenv lock
+	pipenv install --dev --deploy
 
 upload:
 	twine upload dist/*
