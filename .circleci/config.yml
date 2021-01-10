@@ -20,9 +20,16 @@ workflows:
   build_and_deploy:
     jobs:
       # First test triggered by a commit
+      - lint:
+          name: lint-3.7
+          version: "3.7"
+          # required as deploy has tags version filter
+          <<: *filters_any
       - test:
           name: test-3.7
           version: "3.7"
+          requires:
+            - lint-3.7
           # required as deploy has tags version filter
           <<: *filters_any
       # Other test environments in parallel
@@ -32,11 +39,25 @@ workflows:
           requires:
             - test-3.7
           <<: *filters_any
+      - test:
+          name: test-3.8
+          version: "3.8"
+          requires:
+            - test-3.7
+          <<: *filters_any
+      - test:
+          name: test-3.9
+          version: "3.9"
+          requires:
+            - test-3.7
+          <<: *filters_any
       # Build packages
       - build:
           requires:
             - test-3.6
             - test-3.7
+            - test-3.8
+            - test-3.9
           <<: *filters_any
       # Reinstall the generated packages and test
       - integrate:
@@ -59,6 +80,31 @@ workflows:
           <<: *filters_version_tag
 
 jobs:
+  lint:
+    parameters:
+      version:
+        type: string
+    docker:
+      - image: circleci/python:<< parameters.version >>
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-dependency-cache-<< parameters.version >>-{{ checksum "Pipfile.lock" }}
+      - run:
+          name: install python dependencies
+          command: |
+            python<< parameters.version >> -m venv ~/venv
+            . ~/venv/bin/activate
+            make dev
+      - save_cache:
+          key: v1-dependency-cache-<< parameters.version >>-{{ checksum "Pipfile.lock" }}
+          paths:
+            - "~/venv"
+      - run:
+          name: run lints
+          command: |
+            . ~/venv/bin/activate
+            make lint
   test:
     parameters:
       version:
