@@ -1,7 +1,7 @@
 import subprocess
 
 
-def test_flake8_output():
+def test_flake8_output() -> None:
     result = subprocess.run(
         ["flake8", "--config", "integrate/setup.cfg", "integrate"],
         capture_output=True,
