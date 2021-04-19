@@ -11,6 +11,7 @@ coverage:
 	codecov
 
 dev:
+	pip install -U pip
 	pip install "pipenv==2020.11.15"
 	pipenv install --dev --deploy
 	pip install -e .
@@ -22,7 +23,8 @@ lint:
 	isort --diff .
 	black --check --diff .
 	flake8
-	mypy flake8_fixme integrate
+	mypy flake8_fixme
+	mypy integrate
 
 lint-fix:
 	isort -y .
