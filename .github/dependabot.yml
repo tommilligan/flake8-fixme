@@ -1,0 +1,40 @@
+version: 2
+updates:
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: flake8
+    versions:
+    - 3.9.0
+    - 3.9.1
+  - dependency-name: urllib3
+    versions:
+    - 1.26.3
+    - 1.26.4
+  - dependency-name: pytest
+    versions:
+    - 6.2.2
+    - 6.2.3
+  - dependency-name: isort
+    versions:
+    - 5.8.0
+  - dependency-name: twine
+    versions:
+    - 3.4.0
+    - 3.4.1
+  - dependency-name: mypy
+    versions:
+    - "0.800"
+    - "0.812"
+  - dependency-name: cryptography
+    versions:
+    - 3.3.2
+  - dependency-name: bleach
+    versions:
+    - 3.3.0
+  - dependency-name: pytest-cov
+    versions:
+    - 2.11.1
