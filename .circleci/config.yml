@@ -2,7 +2,7 @@ version: 2.1
 
 _docker_python_default: &docker_python_default
   docker:
-    - image: circleci/python:3.7
+    - image: circleci/python:3.8
 
 _filters_any: &filters_any
   filters:
@@ -21,15 +21,15 @@ workflows:
     jobs:
       # First test triggered by a commit
       - lint:
-          name: lint-3.7
-          version: "3.7"
+          name: lint-3.8
+          version: "3.8"
           # required as deploy has tags version filter
           <<: *filters_any
       - test:
-          name: test-3.7
-          version: "3.7"
+          name: test-3.8
+          version: "3.8"
           requires:
-            - lint-3.7
+            - lint-3.8
           # required as deploy has tags version filter
           <<: *filters_any
       # Other test environments in parallel
@@ -37,19 +37,19 @@ workflows:
           name: test-3.6
           version: "3.6"
           requires:
-            - test-3.7
+            - test-3.8
           <<: *filters_any
       - test:
-          name: test-3.8
-          version: "3.8"
+          name: test-3.7
+          version: "3.7"
           requires:
-            - test-3.7
+            - test-3.8
           <<: *filters_any
       - test:
           name: test-3.9
           version: "3.9"
           requires:
-            - test-3.7
+            - test-3.8
           <<: *filters_any
       # Build packages
       - build:
@@ -137,7 +137,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: v1-dependency-cache-3.7-{{ checksum "Pipfile.lock" }}
+          key: v1-dependency-cache-3.8-{{ checksum "Pipfile.lock" }}
       - run:
           name: install python dependencies
           command: |
@@ -145,7 +145,7 @@ jobs:
             . ~/venv/bin/activate
             make dev
       - save_cache:
-          key: v1-dependency-cache-3.7-{{ checksum "Pipfile.lock" }}
+          key: v1-dependency-cache-3.8-{{ checksum "Pipfile.lock" }}
           paths:
             - "~/venv"
       - run:
