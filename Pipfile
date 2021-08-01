@@ -7,7 +7,7 @@ verify_ssl = true
 black = "==21.5b2"
 codecov = "~=2.0"
 flake8 = "~=3.8"
-isort = "~=5.7"
+isort = "~=5.9"
 mypy = "~=0.812"
 pytest = "~=6.2"
 pytest-cov = "~=2.8"
