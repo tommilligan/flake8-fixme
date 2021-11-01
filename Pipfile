@@ -6,7 +6,7 @@ verify_ssl = true
 [dev-packages]
 black = "==21.5b2"
 codecov = "~=2.0"
-flake8 = "~=3.8"
+flake8 = "~=4.0"
 isort = "~=5.7"
 mypy = "~=0.812"
 pytest = "~=6.2"
