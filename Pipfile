@@ -4,7 +4,7 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-black = "==21.5b2"
+black = "==21.12b0"
 codecov = "~=2.0"
 flake8 = "~=3.8"
 isort = "~=5.7"
