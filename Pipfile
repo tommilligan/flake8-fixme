@@ -12,7 +12,7 @@ mypy = "~=0.812"
 pytest = "~=6.2"
 pytest-cov = "~=2.8"
 twine = "~=3.1"
-wheel = "~=0.36"
+wheel = "~=0.38"
 
 [packages]
 
